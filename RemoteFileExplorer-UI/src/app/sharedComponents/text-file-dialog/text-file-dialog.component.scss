@@ -1,0 +1,58 @@
+.file-name-input {
+  width: 25em;
+  height: 3em;
+  padding: 0.5em 0.8em;
+  border-radius: 0.5em;
+  outline: 0;
+  border: 0;
+  background: whitesmoke;
+}
+
+.file-name-input:hover,
+.file-name-input:focus,
+// .content:hover,
+.content:focus {
+  border: 2px solid #d0d7de;
+}
+
+.content {
+  height: 60vh;
+  width: 100%;
+  margin: auto;
+  display: block;
+  resize: none;
+  outline: none;
+  border-radius: 8px;
+  border: 0;
+  background: whitesmoke;
+  padding: 1em;
+}
+
+.saveInProgressSpinner {
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.saveBtn {
+  display: flex;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+// .title.no-input {
+//   white-space: nowrap;
+//   max-width: 400px;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   direction: rtl;
+// }

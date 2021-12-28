@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+    box-shadow: none;
+}
+
+.fileSystemItemName-wrap{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+th.mat-header-cell {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.fixedColumn {
+    width: 100px;
+    text-align: center;
+}
+.nameColumn {
+    width: 500px;
+}
+td.nameColumn {
+    cursor: pointer;
+}

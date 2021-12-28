@@ -1,0 +1,15 @@
+.global-progressBar {
+  min-height: 5px;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background: #f9627d;
+}
+
+mat-toolbar {
+  // border-bottom: 2px solid black;
+  margin-bottom: 1em;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}

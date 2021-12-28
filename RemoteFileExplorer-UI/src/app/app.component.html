@@ -1,0 +1,27 @@
+<div class="global-progressBar">
+  <mat-progress-bar
+    mode="indeterminate"
+    *ngIf="showGlobalProgressBar"
+  ></mat-progress-bar>
+</div>
+<mat-toolbar>
+  <mat-icon aria-hidden="false" style="color: #396b89">cloud</mat-icon>
+  &nbsp;
+  <span>Drive</span>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="add menu">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="newTextDocument()">
+    <mat-icon>text_snippet</mat-icon>
+    <span>New Text Document</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,23 @@
+<div class="menu-grid">
+  <button class="menu-grid-item brinkPink" matRipple (click)="upload_input.click()">
+    <mat-icon aria-hidden="false" inline="true">cloud_upload</mat-icon>
+    <span>File Upload</span>
+  </button>
+  <button
+    class="menu-grid-item brinkPink"
+    [disabled]="downloadDisabled"
+    [ngClass]="{ 'disabled-action': downloadDisabled }"
+    matRipple
+    (click)="downloadItem()"
+  >
+    <mat-icon aria-hidden="false" inline="true">cloud_download</mat-icon>
+    <span>Download</span>
+  </button>
+
+  <div class="properties-pane custom-scroll">
+    <properties-pane></properties-pane>
+    <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. -->
+  </div>
+</div>
+<upload-progress (closed)="showUploadProgress=false" *ngIf="showUploadProgress"></upload-progress>
+<input hidden type="file" #upload_input (change)="uploadFile($event)">

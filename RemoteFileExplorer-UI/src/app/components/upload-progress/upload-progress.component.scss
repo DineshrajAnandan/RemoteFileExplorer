@@ -1,0 +1,40 @@
+.upload-complete-icon {
+    color:white;
+    background-color: green;
+    border-radius: 1em;
+    padding: 0.15em;
+}
+
+.upload-file-name {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header {
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    // border-radius: 5px;
+}
+
+.header > mat-icon {
+    color: white;
+    cursor: pointer;
+    border-radius: 1em;
+}
+
+.scrollable-content {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+mat-list {
+    padding-bottom: 0.8em;
+    background-color: #efefef;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}

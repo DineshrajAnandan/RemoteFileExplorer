@@ -1,0 +1,27 @@
+<mat-list>
+    <div mat-subheader class="header">
+      <span>Uploading item(s)</span>
+      <mat-icon matRipple (click)="close()">clear</mat-icon>
+    </div>
+    <!-- <div *ngFor="let item of data">
+        <mat-icon>upload_file</mat-icon>
+        <div >{{item.itemName}}</div>
+        <div > {{item.itemLength | fileSizeToString}} </div>
+        <div class="status">
+          <mat-spinner *ngIf="!item.uploadComplete"></mat-spinner>
+          <mat-icon *ngIf="item.uploadComplete">file_download_done</mat-icon>
+        </div>
+    </div> -->
+    <div class="scrollable-content custom-scroll">
+      
+      <mat-list-item *ngFor="let item of data">
+        <mat-icon mat-list-icon>upload_file</mat-icon>
+        <div mat-line class="upload-file-name" [matTooltip]="item.itemName">{{item.itemName}}</div>
+        <div mat-line> {{item.itemLength | fileSizeToString}} </div>
+        <div class="status">
+          <mat-spinner [diameter]="40" [strokeWidth]="6" *ngIf="!item.uploadComplete"></mat-spinner>
+          <mat-icon *ngIf="item.uploadComplete" class="upload-complete-icon">file_download_done</mat-icon>
+        </div>
+      </mat-list-item>
+    </div>
+  </mat-list>

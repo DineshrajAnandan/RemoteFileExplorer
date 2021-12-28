@@ -1,0 +1,41 @@
+<h2 mat-dialog-title class="dialog-header">
+  <mat-icon aria-hidden="false" class="blue"> text_snippet </mat-icon>
+  <div class="new-file-title title" *ngIf="data.isNew; else title">
+    {{ data.folderName }} /&nbsp;
+    <input
+      [(ngModel)]="data.fileName"
+      placeholder="Enter File Name"
+      class="file-name-input"
+      [disabled]="saveInProgress"
+    />
+  </div>
+</h2>
+<mat-dialog-content class="mat-typography custom-scroll">
+  <textarea
+    class="content custom-scroll"
+    [disabled]="saveInProgress || isContentLoading"
+    [(ngModel)]="data.content"
+  >
+  </textarea>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close [disabled]="saveInProgress">Close</button>
+  <button
+    mat-button
+    (click)="saveFile()"
+    cdkFocusInitial
+    class="saveBtn"
+    [disabled]="saveInProgress"
+  >
+    <span>Save & Close</span>
+    <mat-spinner
+      diameter="25"
+      *ngIf="saveInProgress"
+      class="saveInProgressSpinner"
+    ></mat-spinner>
+  </button>
+</mat-dialog-actions>
+
+<ng-template #title>
+  <div class="title no-input">{{ data.fileName }}</div>
+</ng-template>

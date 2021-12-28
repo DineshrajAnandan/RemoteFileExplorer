@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="showProgressBar"
+></mat-progress-bar>
+<div mat-dialog-content>
+  <button
+    mat-icon-button
+    [disabled]="!oneUpPath"
+    (click)="getFoldersList(oneUpPath)"
+  >
+    <mat-icon aria-hidden="false">arrow_upward</mat-icon>
+  </button>
+  <div class="folder-grid custom-scroll">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th hidden mat-header-cell *matHeaderCellDef class="nameColumn">
+          Name
+        </th>
+        <td mat-cell *matCellDef="let element" class="nameColumn">
+          <div class="fileSystemItemName-wrap">
+            <mat-icon aria-hidden="false" class="yellow"> folder </mat-icon>
+            <span>{{ element.name }}</span>
+          </div>
+        </td>
+      </ng-container>
+      <tr
+        hidden
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="folderSelected = row"
+        (dblclick)="getFoldersList(row.absPath)"
+        [ngClass]="row | fileGridSelectedItems: folderSelectedForPipe"
+      ></tr>
+    </table>
+  </div>
+
+  <div class="selected-folder-display">
+    {{ selectedFolderToDisplay }}
+  </div>
+</div>
+<div mat-dialog-actions class="footer">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="dataOnClose" cdkFocusInitial>
+    Ok
+  </button>
+</div>

@@ -1,0 +1,109 @@
+<div class="file-explorer-container">
+  <div class="file-explorer-main-wrap">
+    <div class="location-bar-wrap">
+      <button
+        mat-icon-button
+        [disabled]="!oneUpPath"
+        (click)="folderOpen(oneUpPath)"
+      >
+        <mat-icon aria-hidden="false">arrow_upward</mat-icon>
+      </button>      
+
+      <div class="location-bar ellipses">{{ currentDirName }}</div>
+    </div>
+    <div class="tableGrid">
+      <file-grid
+        [data]="dataSource"
+        [selectedItems]="selectedItems"
+        (selectedEvt)="itemSelected($event)"
+        (folderOpen)="folderOpen($event)"
+      ></file-grid>
+    </div>
+  </div>
+
+  <div class="options-wrap">
+    <div class="menu-items">
+      <button
+        class="menu-item-btn"
+        [disabled]="selectedItems.length == 0"
+        color="warn"
+        mat-icon-button
+        matTooltip="Delete"
+        matTooltipPosition="left"
+        (click)="deleteItem()"
+      >
+        <mat-icon class="menu-item" aria-hidden="false" inline="true"
+          >delete_outline</mat-icon
+        >
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        class="menu-item-btn"
+        [disabled]="selectedItems.length == 0"
+        mat-icon-button
+        matTooltip="Move"
+        matTooltipPosition="left"
+        (click)="moveItem()"
+      >
+        <mat-icon class="menu-item" aria-hidden="false" inline="true"
+          >drive_file_move</mat-icon
+        >
+      </button>
+      <button
+        class="menu-item-btn"
+        [disabled]="selectedItems.length == 0"
+        mat-icon-button
+        matTooltip="Copy"
+        matTooltipPosition="left"
+        (click)="copyItem()"
+      >
+        <mat-icon class="menu-item" aria-hidden="false" inline="true"
+          >file_copy</mat-icon
+        >
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        class="menu-item-btn"
+        [disabled]="selectedItems.length != 1"
+        mat-icon-button
+        matTooltip="Rename"
+        matTooltipPosition="left"
+        (click)="renameItem()"
+      >
+        <mat-icon class="menu-item" aria-hidden="false" inline="true"
+          >drive_file_rename_outline</mat-icon
+        >
+      </button>
+      <mat-divider></mat-divider>
+      <button
+        class="menu-item-btn"
+        mat-icon-button
+        matTooltip="New Folder"
+        matTooltipPosition="left"
+        (click)="createNewFolder()"
+      >
+        <mat-icon class="menu-item" aria-hidden="false" inline="true"
+          >create_new_folder</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="menu-items mid-container">
+  <button class="menu-item-btn" mat-icon-button matTooltip="Delete">
+    <mat-icon class="menu-item" aria-hidden="false" inline="true">delete_outline</mat-icon>
+  </button>
+  <button class="menu-item-btn" mat-icon-button matTooltip="Move">
+    <mat-icon class="menu-item" aria-hidden="false" inline="true">drive_file_move</mat-icon>
+  </button>
+  <button class="menu-item-btn" mat-icon-button matTooltip="Copy">
+    <mat-icon class="menu-item" aria-hidden="false" inline="true">file_copy</mat-icon>
+  </button>
+  <button class="menu-item-btn" mat-icon-button matTooltip="Rename">
+    <mat-icon class="menu-item" aria-hidden="false" inline="true">drive_file_rename_outline</mat-icon>
+  </button>
+  <button class="menu-item-btn" mat-icon-button matTooltip="New Folder">
+    <mat-icon class="menu-item" aria-hidden="false" inline="true">create_new_folder</mat-icon>
+  </button>
+</div> -->

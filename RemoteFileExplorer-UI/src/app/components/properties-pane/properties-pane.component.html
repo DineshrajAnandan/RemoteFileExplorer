@@ -1,0 +1,75 @@
+<div class="title-selected title" *ngIf="selectedItem; else titlePlaceholder">
+  <!-- <span>{{ selectedItem?.nameWithExtension }}</span> -->
+  <mat-icon
+    aria-hidden="false"
+    inline="true"
+    [ngClass]="selectedItem?.type | fileSystemIconColorClass"
+  >
+    {{ selectedItem?.type | fileSystemIconClass }}
+  </mat-icon>
+</div>
+<mat-divider></mat-divider>
+
+<div class="content" *ngIf="selectedItem; else contentPlaceholder">
+  <h2>System Properties</h2>
+  <div class="prop-table">
+    <div class="row">
+      <div class="item">Name</div>
+      <div
+        class="value cursor-pointer"
+        [matTooltip]="selectedItem.nameWithExtension"
+      >
+        {{ selectedItem.nameWithExtension }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="item">Type</div>
+      <div class="value">{{ selectedItem.type }}</div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="row" *ngIf="!!selectedItem.size">
+      <div class="item">Size</div>
+      <div class="value">{{ selectedItem.size }}</div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="row">
+      <div class="item">Path</div>
+      <div class="value cursor-pointer" [matTooltip]="selectedItem.absPath | pathDisplay">
+        {{ selectedItem.absPath | pathDisplay}}
+      </div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="row">
+      <div class="item">Created</div>
+      <div class="value">{{ selectedItem.creationTime | date: "medium" }}</div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="row">
+      <div class="item">Modified</div>
+      <div class="value">{{ selectedItem.dateModified | date: "medium" }}</div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    <div class="row">
+      <div class="item">Accessed</div>
+      <div class="value">
+        {{ selectedItem.lastAccessTime | date: "medium" }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #titlePlaceholder>
+  <div class="title-placeholder title">
+    <span>{{ constants.RootPath }}</span>
+    <mat-icon aria-hidden="false" style="color: #396b89" inline="true"
+      >cloud</mat-icon
+    >
+  </div>
+</ng-template>
+<ng-template #contentPlaceholder>
+  <div class="content-placeholder">
+    <mat-icon aria-hidden="false" class="placeholder-icon" inline="true">ads_click</mat-icon>
+    <!-- <img src="/assets/prop-placeholder.png" alt="placeholder" /> -->
+    <span>Select a file or folder to view its details</span>
+  </div>
+</ng-template>
